@@ -7,15 +7,25 @@
  *    it runs? Run the code using `node challenge2.js` and verify that your
  *    expectation was correct.
  * 
+ *    What printed was 
+ *      Hello there, Ducky
+        MAKE SCHOOL IS AWESOME!!!
+ * 
  * 
  * 2. What happens if greet() fails? Make it fail by changing 'name' to a number
  *    instead of a string. What happens? Does uppercaser() still run?
  * 
+ *    I get a warning that says the following whicn shows tha tgreeting does
+ *    not work:
+ *      Received an error!
+        Name must be a string!
  * 
  * 3. What happens if greet() succeeds and uppercaser() fails? Modify your code
  *    to achieve this result by changing the values of 'name' and 'my_str' and
  *    run the code again.
  * 
+ *    I get the greet correctly but I get a warning error for the uppercase when 
+ *    it fails
  * 
  * 4. Write a method that takes a string as input and returns the input string
  *    with a space added between each character. E.g. 'foo' -> 'f o o'
@@ -63,8 +73,20 @@ function uppercaser(str) {
     });
 }
 
-name = 'Ducky'
-my_str = 'Make School is Awesome!!!'
+function spacer(str) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+    if (typeof str === 'string') {
+        resolve(str.split().join(' '));
+    } else {
+        reject('Couldnt split the word');
+    }
+    }, 1500);
+});
+}
+
+name = 'Omar'
+my_str = 'i enjoy walks on the beach'
 
 greet(name)
     .then((greetResult) => {
@@ -73,7 +95,12 @@ greet(name)
     })
     .then((uppercaserResult) => {
         console.log(uppercaserResult)
-    }).catch((err) => {
+        return spacer(name)
+    })
+    .then((spacerString) => {
+      console.log(spacerString)
+    })
+    .catch((err) => {
         console.log('Received an error!')
         console.log(err);
     });

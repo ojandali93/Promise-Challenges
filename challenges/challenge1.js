@@ -22,7 +22,7 @@
 function snooze(action) {
     setTimeout(function() {
       action();
-    }, 2000);
+    }, 0);
 }
 console.log('Step 1');
 
@@ -33,3 +33,14 @@ snooze( function() {
 
 console.log('Step 3');
 
+/*
+ *******************************************************************************
+ * Answer: the steps were printed in step1, step3, step2
+ * 
+ * Answer: the steps were printed in the same order. I did expect that because
+ * what is happening is while the function of snooze is running it already passed
+ * the block and ran the console.log(step 3) line then grabbed the result of the
+ * snooze function
+ * 
+ *******************************************************************************
+ */
